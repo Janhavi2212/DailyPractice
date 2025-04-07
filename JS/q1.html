@@ -1,0 +1,89 @@
+<!-- Create a dynamic table that allows users to add, edit, and delete rows. Each row should have input fields for user data. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1</title>
+    <style>
+        *{
+            background-color: black;
+            color: aliceblue;
+        }
+    </style>
+   
+</head>
+<body>
+    <div>
+        <label for="userInput">Please enter the number of rows</label>
+        <br>
+        <input id="userInput" type="number">
+        <button id="btn-submit" type="submit">Submit</button>
+    </div>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <td>Add</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- <tr>
+                <th>
+                    <input type="text" placeholder="Please Enter Data"/>
+                </th>
+                <td>
+                    <button onclick="handleAdd">Add</button>
+                </td>
+                <td>
+                    <button>Edit</button>
+                </td>
+                <td>
+                    <button>Delete</button>
+                </td>
+            </tr> -->
+        </tbody>
+    </table>
+</body>
+<script>
+    
+    const submitButton=document.getElementById("btn-submit");
+    submitButton.addEventListener("click", createtable)
+    function createtable(){
+        let userInput=document.getElementById("userInput").value;
+        let tableBody=document.getElementById("tableBody");
+        const handleAdd=()=>{
+            let newRow=tableBody.insertRow();
+            let ip=newRow.insertCell(0)
+            ip.innerHTML=`<input type="text" placeholder="Please Enter Data"/>`
+            let addButton=newRow.insertCell(1);
+            addButton.innerHTML=`<button onclick="handleAdd">Add</button>`
+            let editButton=newRow.insertCell(2);
+            editButton.innerHTML=`<button onclick="handleEdit">Edit</button>`
+            let delButton=newRow.insertCell(3);
+            delButton.innerHTML=`<button onclick="handleDel">Delete</button>`
+        }
+        const handleEdit=()=>{
+            console.log("edit btn")
+        }
+        const handleDel=()=>{
+            console.log("del-btn")
+        }
+        for(let i=0;i<userInput;i++){
+            let newRow=tableBody.insertRow();
+            let ip=newRow.insertCell(0)
+            ip.innerHTML=`<input type="text" placeholder="Please Enter Data"/>`
+            let addButton=newRow.insertCell(1);
+            addButton.innerHTML=`<button onclick="handleAdd">Add</button>`
+            let editButton=newRow.insertCell(2);
+            editButton.innerHTML=`<button onclick="handleEdit">Edit</button>`
+            let delButton=newRow.insertCell(3);
+            delButton.innerHTML=`<button onclick="handleDel">Delete</button>`
+        }
+    }
+</script>
+
+</html>
